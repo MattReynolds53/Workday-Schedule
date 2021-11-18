@@ -1,8 +1,8 @@
 let currentDate = moment();
-$("#currentDay").text(currentDate.format("dddd, MMMM Do"));
+$("#currentDay").text(currentDate.format("dddd, MMMM Do, YYYY"));
 
-let currentTime = moment();
-$("#currentTime").text(currentTime.format("h"));
+let currentTime = moment().hour();
+// $("#currentTime").text(currentTime.format('h'));
 
 
 // Adding an event listener to save local storage
@@ -11,30 +11,63 @@ $("#currentTime").text(currentTime.format("h"));
 
 //Statement to synch up time with color scheme of past, present, or future
 
-let timeOnSchedule = document.querySelectorAll(".hour");
-let scheduleEntry = document.querySelectorAll("#scheduleEntry");
+
+// let scheduleEntry = document.querySelectorAll("#scheduleEntry");
+let timeBlock = $("textarea")
+let saveBtn = $('button')
 
 //Saving textarea entry as a variable
-let textAreaEntry = document.querySelector("#textAreaEntry").value;
-console.log(textAreaEntry);
+// let textAreaEntry = document.querySelector("#textAreaEntry").value;
+// console.log(textAreaEntry);
 
 
-let saveTAEntry = document.querySelector("#saveBtn");
+// let saveTAEntry = document.querySelector("#saveBtn");
 
-saveTAEntry.addEventListener("click", function(){
-    console.log(`${textAreaEntry} saved to local storage`);
-    localStorage.setItem("9AM", textAreaEntry);
-}); 
+// saveTAEntry.on("click", function(){
+//     console.log(`${textAreaEntry} saved to local storage`);
+//     localStorage.setItem("9AM", textAreaEntry);
+// }); 
 
 
 
 // Can we use >, <, and = with time? I'm not sure if it can tell that 1:00pm is greater than 12:00PM in its mind
-// if (currentTime > timeOnSchedule) { 
-//     scheduleEntry.addClass('past');
-// } else if (currentTime == timeOnSchedule) {
-//     scheduleEntry.addClass('present');
-// } else {
-//     scheduleEntry.addClass('future');
-// };
+
+function setColor() {
+    
+    timeBlock.each(function() {
+
+        let hour = $(this).attr('id');
+        
+        if (currentTime > hour) { 
+            $(this).addClass('past');
+        } else if (currentTime == hour) {
+            $(this).removeClass('past');
+            $(this).addClass('present');
+        } else {
+            $(this).removeClass('past');
+            $(this).removeClass('present');
+            $(this).addClass('future');
+        };
+    })
+    
+}
+
+saveBtn.on('click', function() {
+    let id = $(this).attr('id')
+    let task = $(this).parent('div').siblings('div').children('textarea').val()
+    localStorage.setItem(id, task)
+    getTasks()
+})
+
+function getTasks() {
+    for (let i = 9; i < 18; i++) {
+        var getTask = localStorage.getItem(i)
+        $("#" + i).text(getTask)
+    }
+}
+
+getTasks()
+setColor()
+
 // Give div for time section a data-vlue and compare that within the if statement
 
