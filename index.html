@@ -27,28 +27,27 @@
       <h1 class="display-3">Work Day Scheduler</h1>
       <p class="lead">A simple calendar app for scheduling your work day</p>
       <p id="currentDay" class="lead"></p>
+      <p id="currentTime" class="lead"></p>
     </header>
     <div class="container">
       <!-- Timeblocks go here -->
+      <!-- // use div with row and column -->
+      <!-- You shouldn't have to, but you can use keywords for margin, padding, etc. in the class section if you need to to adjust without changing the css sheet -->
+      <div class="container">
+        <div class="row">
+          <div class="col border rounded hour" data-value="9">
+            9:00AM
+          </div>
+          <div class="col-10 present textarea" id="textAreaEntry">
+            <textarea class="col-10 textarea"></textarea>
+          </div>
+          <div class="col saveBtn">
+            <button class="saveBtn" id="saveBtn">Save</button>
+          </div>
+        </div>
+      </div>
+
       
-      
-      <table class="description">
-        <tr class="row time-block">
-          <th class="hour">  9:00AM</th>
-          <th class="time-block past">Give user option to enter text here. I am making this longer because I cannot seem to get the row to increase in width.</th> 
-          <th class="saveBtn"><button class="saveBtn" id="btn">Save Button</button></th>
-        </tr> -->
-        <tr class="row">
-          <th class="hour">10:00AM</th>
-          <th class="time-block present">Give user option to enter text here. I am making this longer because I cannot seem to get the row to increase in width.</th>
-          <th class="saveBtn"><button class="saveBtn" id="btn">Save Button</button></th>
-        </tr> -->
-        <tr class="row">
-          <th class="hour">11:00AM</th>
-          <th class="time-block future"><form>Give user option to enter text here. I am making this longer because I cannot seem to get the row to increase in width.</form></th>
-          <th class="saveBtn"><button class="saveBtn" id="btn">Save Button</button></th>
-        </tr> -->
-      </table>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
