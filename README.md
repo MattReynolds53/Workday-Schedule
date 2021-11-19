@@ -1,89 +1,28 @@
-# 05 Third-Party APIs: Work Day Scheduler
+## Work Day Schedule Assignment
 
-## Your Task
-
-Create a simple calendar application that allows a user to save events for each hour of the day by modifying starter code. This app will run in the browser and feature dynamically updated HTML and CSS powered by jQuery.
-
-You'll need to use the [Moment.js](https://momentjs.com/) library to work with date and time. Be sure to read the documentation carefully and concentrate on using Moment.js in the browser.
-
-## User Story
-
-```md
-AS AN employee with a busy schedule
-I WANT to add important events to a daily planner
-SO THAT I can manage my time effectively
+```
+For this assignment, I built a custom work day schedule. In order to build it, I utilized a combination of div and row tags to fill out the skeleton of the webpage. I then incorporated the premade style.css sheet to the areas that corresponded best. I then added textarea tags to allow the user to add whatever text they wanted to the schedule. 
 ```
 
-## Acceptance Criteria
-
-```md
-GIVEN I am using a daily planner to create a schedule
-WHEN I open the planner
-THEN the current day is displayed at the top of the calendar
-WHEN I scroll down
-THEN I am presented with timeblocks for standard business hours
-WHEN I view the timeblocks for that day
-THEN each timeblock is color coded to indicate whether it is in the past, present, or future
-WHEN I click into a timeblock
-THEN I can enter an event
-WHEN I click the save button for that timeblock
-THEN the text for that event is saved in local storage
-WHEN I refresh the page
-THEN the saved events persist
+## Behind the Scenes
+```
+To get the schedule, and more specifically the textarea tags, to display the appropriate color, I created a function titled setColor() which contained an if - else if - else statement to compare the id values to the current time value. If the id value was less than the current time, the if statement would add the ".past" class, making the textarea background grey. If the values were equal, the if statement would remove the ".past" class and add the ".present" class, making the textarea background red. If the the id value was greater than the value of the current time, the if statement would remove the ".past" and ".present" classes and add the ".future" class, making the textarea background green.
 ```
 
-The following animation demonstrates the application functionality:
+## Building the Schedule
+``` 
+Once the user begins filling out the textarea for the respective hour segment, I linked the textarea value to the save button to store the value locally. I then created a function called getTasks() to pull the locally-stored information and keep it on the page when the user refreshes it.
+```
 
-![A user clicks on slots on the color-coded calendar and edits the events.](./Assets/05-third-party-apis-homework-demo.gif)
+## Links
+
+GitHub Repository Link: https://github.com/MattReynolds53/Workday-Schedule
+
+GitHub Pages Link: https://mattreynolds53.github.io/Workday-Schedule/
 
 
-## Grading Requirements
+## Screenshots
 
-This homework is graded based on the following criteria: 
+![](./Develop/Screenshots/WorkSchedule1.png)
+![](./Develop/Screenshots/WorkSchedule1.png)
 
-### Technical Acceptance Criteria: 40%
-
-* Satisfies all of the above acceptance criteria plus the following:
-
-  * Uses a date utility library to work with date and time
-
-### Deployment: 32%
-
-* Application deployed at live URL
-
-* Application loads with no errors
-
-* Application GitHub URL submitted
-
-* GitHub repo contains application code
-
-### Application Quality: 15%
-
-* Application user experience is intuitive and easy to navigate
-
-* Application user interface style is clean and polished
-
-* Application resembles the mock-up functionality provided in the homework instructions
-
-### Repository Quality: 13%
-
-* Repository has a unique name
-
-* Repository follows best practices for file structure and naming conventions
-
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-
-* Repository contains multiple descriptive commit messages
-
-* Repository contains quality README file with description, screenshot, and link to deployed application
-
-## Review
-
-You are required to submit the following for review:
-
-* The URL of the deployed application
-
-* The URL of the GitHub repository, with a unique name and a README describing the project
-
-- - -
-© 2021 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
